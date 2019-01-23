@@ -90,7 +90,7 @@ module PostgresCopy
                            force_null = options.key?(:force_null) ? "FORCE_NULL(#{options[:force_null].join(',')})" : nil
                            delimiter = options[:format] == :tsv ? "E'\t'" : "'#{options[:delimiter]}'"
                            "WITH (" + ["DELIMITER #{delimiter}", "QUOTE '#{quote}'", null, force_null, "FORMAT CSV"].compact.join(', ') + ")"
-                         end
+                           end
         io = path_or_io.instance_of?(String) ? File.open(path_or_io, get_file_mode('r', options[:encoding])) : path_or_io
 
         if options[:format] == :binary
